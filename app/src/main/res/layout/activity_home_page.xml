@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_homePage">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="678dp"
+        android:layout_margin="30dp"
+        android:background="@color/white"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="10dp"
+        app:strokeColor="@color/black"
+        app:strokeWidth="0.5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose Your Courses"
+                android:textAlignment="center"
+                android:textColor="@color/licorice"
+                android:textSize="40dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:background="@color/lightBlue"
+                android:paddingTop="15dp"
+                android:text="Six Month Courses"
+                android:textAlignment="center"
+                android:textColor="@color/licorice"
+                android:textSize="25dp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="89dp"
+                android:background="@color/lightBlue" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sixMonthBtn"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/licorice"
+                android:text="Select"
+                app:backgroundTint="@color/licorice" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:background="@color/lightBlue"
+                android:paddingTop="15dp"
+                android:text="Six Week Courses"
+                android:textAlignment="center"
+                android:textColor="@color/licorice"
+                android:textSize="25dp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="89dp"
+                android:background="@color/lightBlue" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/SixWeekBtn"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/licorice"
+                android:text="Select"
+                app:backgroundTint="@color/licorice" />
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>
+
+
