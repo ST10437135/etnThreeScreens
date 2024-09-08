@@ -1,4 +1,4 @@
-package com.example.etnthreepages
+package com.example.etnthreepages.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,24 +8,33 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import com.example.etnthreepages.R
+import com.example.etnthreepages.activity_homePage
 import com.example.etnthreepages.databinding.ActivitySignupBinding
 
 class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusChangeListener, View.OnKeyListener {
 
+    // View binding object to access UI elements in the layout
     private lateinit var mBinding: ActivitySignupBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Inflate the layout and bind it to mBinding
         mBinding = ActivitySignupBinding.inflate(LayoutInflater.from(this))
         setContentView(mBinding.root)
+
+        // Set focus change listeners for input fields
         mBinding.nameTxtInp.onFocusChangeListener = this
         mBinding.emailTxtInp.onFocusChangeListener = this
         mBinding.passwordTxtInp.onFocusChangeListener = this
         mBinding.confirmpTxtInp.onFocusChangeListener = this
 
+
         val signUpBtn = findViewById<Button>(R.id.signUpBtn)
 
+        // Start the HomPage Activity upon successful sign-up
         signUpBtn.setOnClickListener{
             val intent = Intent(this , activity_homePage::class.java)
             startActivity(intent)
@@ -33,6 +42,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
         }
     }
 
+    //Validate the name input field
     private fun validateName(): Boolean{
         var errorMessage: String? = null
         val value: String = mBinding.nameTxtInp.text.toString()
@@ -40,6 +50,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
             errorMessage = "Name is required"
         }
 
+        // Display error if validation fails
         if(errorMessage != null){
             mBinding.nameTxtInpLyt.apply {
                 isErrorEnabled = true
@@ -47,9 +58,11 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
             }
         }
 
+        // Return true if there is no error
         return errorMessage == null
     }
 
+    // Vailidates the email input field
     private fun validateEmail(): Boolean{
         var errorMessage: String? = null
         val value: String = mBinding.emailTxtInp.text.toString()
@@ -59,6 +72,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
             errorMessage = "Email Address is invalid"
         }
 
+        // Display error message if validation fails
         if(errorMessage != null){
             mBinding.emailTxtInpLyt.apply {
                 isErrorEnabled = true
@@ -66,9 +80,11 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
             }
         }
 
+        // Return true if there is no error
         return errorMessage == null
     }
 
+    // Validates the password input field
     private fun validatePassword(): Boolean{
         var errorMessage: String? = null
         val value: String = mBinding.passwordTxtInp.text.toString()
@@ -78,6 +94,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
             errorMessage = "Password must 6 characters long"
         }
 
+        // Display error message if validation fails
         if(errorMessage != null){
             mBinding.passwordTxtInpLyt.apply {
                 isErrorEnabled = true
@@ -85,9 +102,11 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
             }
         }
 
+        // Return true if there is no error
         return errorMessage == null
     }
 
+    // Validates the confirm password input field
     private fun validateConfirmPassword(): Boolean{
         var errorMessage: String? = null
         val value = mBinding.confirmpTxtInp.text.toString()
@@ -97,6 +116,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
             errorMessage = "Confirm Password must be 6 characters long"
         }
 
+        // Display error message if validation fails
         if(errorMessage != null){
             mBinding.confirmpTxtInpLyt.apply {
                 isErrorEnabled = true
@@ -104,9 +124,11 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
             }
         }
 
+        // Return true if there is no error
         return errorMessage == null
     }
 
+    // Validates if password and confirm password fields match
     private fun validatePasswordAndConfirmPassword(): Boolean{
         var errorMessage: String? = null
         val password = mBinding.passwordTxtInp.text.toString()
@@ -115,6 +137,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
             errorMessage = "Confirm Password doesn't match with password"
         }
 
+        // Display error if validation fails
         if(errorMessage != null){
             mBinding.confirmpTxtInpLyt.apply {
                 isErrorEnabled = true
@@ -122,22 +145,27 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
             }
         }
 
+        // Return true if there is no error
         return errorMessage == null
     }
 
+    // Handles click events for views in the activity
     override fun onClick(view: View?) {
         TODO("Not yet implemented")
     }
 
+    // Handles focuc change events for views in the activity
     override fun onFocusChange(view: View?, hasFocus: Boolean) {
         if(view != null){
             when(view.id){
                 R.id.nameTxtInp -> {
                     if(hasFocus){
+                        // Clear error message when input gains focus
                         if(mBinding.nameTxtInpLyt.isErrorEnabled){
                             mBinding.nameTxtInpLyt.isErrorEnabled = false
                         }
                     }else{
+                        // Validate name when input loses focus
                         validateName()
                     }
                 }
@@ -147,7 +175,9 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
                             mBinding.emailTxtInpLyt.isErrorEnabled = false
                         }
                     }else{
-                        validateEmail()
+                        if(validateEmail()){
+                            //do validation for the uniqueness of the email
+                        }
                     }
                 }
                 R.id.passwordTxtInp -> {
@@ -183,7 +213,9 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
         }
     }
 
+    // Handles key events for views in the activity
     override fun onKey(view: View?, event: Int, keyEvent: KeyEvent?): Boolean {
+        // Cuurently, this method does nothing and always return false
         return  false
     }
 }
