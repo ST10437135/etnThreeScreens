@@ -13,7 +13,7 @@ object APIService {
     private const val BASE_URL = "base_url"
 
     // Function to return an instance of APIConsumer
-    fun getService(): APIConsumer{
+    fun getService(): APIConsumer {
 
         // Configure the okHttpClient with timeout settings
         val client: OkHttpClient = OkHttpClient.Builder()

@@ -1,7 +1,7 @@
 package com.example.etnthreepages
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
 class activity_homePage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
